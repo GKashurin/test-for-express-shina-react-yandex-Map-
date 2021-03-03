@@ -1,10 +1,11 @@
 import React, {useState} from "react"
 import classNames from 'classnames';
 
-export const Contact = ({address, budgets}) => {
+export const Contact = ({address, budgets, latitude, longitude, setCenter}) => {
     const [active, setActive] = useState(false)
     const handleClick = () => {
-        setActive(!active)
+        setActive(!active);
+        setCenter([latitude, longitude])
     }
     return (
         <button

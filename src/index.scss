@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  margin: 8px;
+}
+
+.contacts {
+  width: 30%;
+  font-family: Arial;
+  margin-right: 10px;
+}
+
+.contact {
+  background-color: #3a3d3e;
+  margin-bottom: 10px;
+  color: #969c9f;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+
+  &:hover {
+    opacity: 0.8
+  }
+
+  &:last-child {
+    margin-bottom: 0
+  }
+
+  &_active {
+    border: 1px solid white;
+    opacity: 0.8
+  }
+}
+
+.contact__address {
+  font-size: 18px
+}
+
+.contact__deliveryType {
+  background-color: #282c2d;
+  margin-right: 7px;
+  font-size: 12px;
+
+  &:last-child {
+    margin-right: 0
+  }
+}

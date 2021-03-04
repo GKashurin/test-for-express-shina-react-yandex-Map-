@@ -2,7 +2,7 @@ import React from "react"
 import {Contact} from "./Contact";
 import "../index.scss"
 
-export const Contacts = ({items, setCenter}) => {
+export const Contacts = ({items, setPosition}) => {
 
     return (
         <div className="contacts">
@@ -12,9 +12,10 @@ export const Contacts = ({items, setCenter}) => {
                 budgets={obj.budgets}
                 latitude={obj.latitude}
                 longitude={obj.longitude}
-                setCenter={setCenter}
+                setPosition={setPosition}
             />
             )}
+            <div className="withLove">Сделано с любовью для компании Express-Шина :)</div>
         </div>
     )
 }

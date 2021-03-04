@@ -5,37 +5,34 @@ import {Contacts} from "./Contacts";
 const App = () => {
     const [items, setItems] = useState(null);
     const [coordinates, setCoordinates] = useState(null);
-    const [center, setCenter] = useState([56.841,60.611]);
-    useEffect(() => {
+    const [position, setPosition] = useState([56.841,60.611]);
+
+        useEffect(() => {
         fetch('http://localhost:3000/state.json')
             .then((resp) => resp.json())
             .then(json => {
                 const data = json.pickPoints;
                 setItems(data);
-                let coord = data.map((obj) => {
+                let coords = data.map((obj) => {
                    return [obj.latitude, obj.longitude]
                 })
-                setCoordinates(coord)
+                setCoordinates(coords)
             })
     }, [])
-
-	useEffect(() => {
-		console.log(center)
-	},[center])
 
 	return (
     <YMaps>
         <div className="wrapper">
             <Contacts items={items}
-					  setCenter={setCenter}
+					  setPosition={setPosition}
 			/>
-            <Map  width='70%'
+            <Map  width='100%'
                   height='100vh'
-                  defaultState={{
-                      center: center,
-                      zoom: 11,
-                      controls: ['zoomControl', 'fullscreenControl'],
-                  }}
+                  state={{
+                       center: position,
+                       zoom: 11,
+                       controls: ['zoomControl', 'fullscreenControl'],
+                   }}
                   modules={['control.ZoomControl', 'control.FullscreenControl']}
             >
                 <Clusterer

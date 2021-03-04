@@ -1,11 +1,11 @@
 import React, {useState} from "react"
 import classNames from 'classnames';
 
-export const Contact = ({address, budgets, latitude, longitude, setCenter}) => {
+export const Contact = ({address, budgets, latitude, longitude, setPosition}) => {
     const [active, setActive] = useState(false)
     const handleClick = () => {
         setActive(!active);
-        setCenter([latitude, longitude])
+        setPosition([latitude, longitude])
     }
     return (
         <button
@@ -14,9 +14,12 @@ export const Contact = ({address, budgets, latitude, longitude, setCenter}) => {
             "contact_active" : active
         })}>
             <div className="contact__address">{address}</div>
-            <div className="">
-                {budgets.map(obj => <span className="contact__deliveryType">{obj}</span>)}
-            </div>
+            <ul className="deliveryType">
+                {budgets.map((obj, i) => <li
+                    className="deliveryType__item"
+                    key={i}
+                >{obj}</li>)}
+            </ul>
         </button>
     )
 }

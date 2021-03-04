@@ -1,12 +1,37 @@
+$tablets_and_phones: 768px;
+
+@mixin tablets_and_phones {
+  @media screen and (max-width: $tablets_and_phones) {
+    @content;
+  }
+}
+
 .wrapper {
   display: flex;
   margin: 8px;
+  @include tablets_and_phones {
+    flex-direction: column;
+  }
+}
+
+ul
+{padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
 }
 
 .contacts {
   width: 30%;
   font-family: Arial;
   margin-right: 10px;
+  @include tablets_and_phones {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 .contact {
@@ -26,21 +51,61 @@
   }
 
   &_active {
-    border: 1px solid white;
     opacity: 0.8
+  }
+  @include tablets_and_phones {
+    width: calc(100% / 2);
+    &:last-child {
+      margin-bottom: auto;
+    }
   }
 }
 
 .contact__address {
-  font-size: 18px
-}
-
-.contact__deliveryType {
-  background-color: #282c2d;
-  margin-right: 7px;
-  font-size: 12px;
-
-  &:last-child {
-    margin-right: 0
+  font-size: 18px;
+  @include tablets_and_phones {
+    font-size: 16px;
   }
 }
+
+.deliveryType {
+  margin-right: 7px;
+  font-size: 12px;
+  display: flex;
+
+}
+
+.deliveryType__item {
+  background-color: #282c2d;
+  margin-right: 10px;
+  padding: 2px 2px;
+&:last-child {
+  margin-right: 0
+}
+  @include tablets_and_phones {
+    margin-right: 5px;
+  }
+}
+
+.withLove {
+  font-size: 10px;
+  color: bisque;
+  opacity: 0;
+
+  animation: myAnimation 4s;
+
+}
+
+@keyframes myAnimation {
+  0% {
+    opacity: 0;
+    transform: rotate(20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+
+}
+//animation: rotatein 1.9s;
+//animation-fill-mode: forwards;
